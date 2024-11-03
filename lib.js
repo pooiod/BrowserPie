@@ -1,6 +1,6 @@
 var BrowserPie = {
     installer: "https://browserpie.pages.dev/BrowserPie Installer.exe",
-    port:5938
+    port: 5938
 }
 
 /** Example script (opens file explorer)
@@ -13,6 +13,10 @@ BrowserPieScript.onload = () => {
 document.head.appendChild(BrowserPieScript);
 */
 
+BrowserPie.setPort = function(port) {
+    BrowserPie.port = port;
+};
+
 BrowserPie.isInstalled = function() {
     return fetch('https://localhost:'+BrowserPie.port+'/')
         .then(response => {
@@ -21,7 +25,7 @@ BrowserPie.isInstalled = function() {
             }
             return !!response.text();
         })
-        .catch(error => {
+        .catch(_ => {
             return false;
         });
 };
@@ -34,7 +38,7 @@ BrowserPie.isAllowed = function() {
             }
             return !!response.text();
         })
-        .catch(error => {
+        .catch(_ => {
             return false;
         });
 };
@@ -43,11 +47,11 @@ BrowserPie.run = function(code) {
     return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent(code))
         .then(response => {
             if (!response.ok) {
-                throw new Error('BrowserPie said ' + response.statusText);
+                throw new Error('Script allowed: ' + response.statusText);
             }
             return response.text();
         })
         .catch(error => {
-            return 'Error: ' + error.message;
+            return 'Error executing code: ' + error.message;
         });
 };
