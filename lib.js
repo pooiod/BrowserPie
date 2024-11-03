@@ -30,6 +30,10 @@ BrowserPie.isInstalled = function() {
         });
 };
 
+BrowserPie.openHistory = function() {
+    window.open("https://localhost:5938/history");
+};
+
 BrowserPie.isAllowed = function() {
     return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent('"true"'))
         .then(response => {
