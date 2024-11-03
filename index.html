@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BrowserPie - Run Python From Your Browser">
+    <title>BrowserPie</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        header {
+            background-color: #2b2e4a;
+            color: #fff;
+            padding: 2em 0;
+            text-align: center;
+            transform: translateY(-30px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        body.loaded header {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+        }
+        header p {
+            font-size: 1.2em;
+            color: #bbb;
+        }
+        main {
+            padding: 2em;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2em;
+            margin-top: 2em;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 1em;
+            width: 350px;
+            text-align: center;
+            transition: transform 0.2s;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        body.loaded .feature-card {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
+        .feature-card h3 {
+            color: #2b2e4a;
+            margin: 0.5em 0;
+        }
+        .download {
+            background-color: #2b2e4a;
+            color: white;
+            padding: 2em;
+            border-radius: 8px;
+            margin-top: 2em;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        body.loaded .download {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        a {
+            text-decoration: none;
+            color: #00d4ff;
+        }
+        .download a {
+            text-decoration: none;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        .test-button {
+            background-color: #00d4ff;
+            color: white;
+            border: none;
+            padding: 1em 2.5em;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 2em;
+            display: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .test-button:hover {
+            background-color: #009ecb;
+            transform: scale(1.05);
+        }
+        .tooltip {
+            display: inline-block;
+            margin-top: 1em;
+            color: #555;
+            font-size: 0.9em;
+        }
+        footer {
+            background-color: #2b2e4a;
+            color: #bbb;
+            padding: 1em 0;
+            text-align: center;
+            font-size: 0.9em;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        body.loaded footer {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+    <script src="https://browserpie.pages.dev/lib.js"></script>
+    <script>
+        async function buttonIfInstalled() {
+            if (await BrowserPie.isInstalled()) {
+                document.getElementById('testButton').style.display = 'inline-block';
+            }
+        }
+
+        async function test() {
+            BrowserPie.run('import ctypes; ctypes.windll.user32.MessageBoxW(0, "BrowserPie is working", "Alert", 1)');
+        }
+
+        function fadeIn() {
+            document.body.classList.add('loaded');
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            await buttonIfInstalled();
+            fadeIn();
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>BrowserPie</h1>
+        <p>Run Python from your web browser!</p>
+    </header>
+
+    <main>
+        <h2>What is BrowserPie?</h2>
+        <p>BrowserPie brings Python to your web browser, letting websites do more than the sandbox allows for. Once installed, you'll be able to test and execute Python scripts from any webpage.</p>
+
+        <section class="features">
+            <div class="feature-card">
+                <img src="https://i.ytimg.com/vi/_opHDLsvWKc/maxresdefault.jpg" alt="Screenshot of Python running in BrowserPie">
+                <h3>Run Python Easily</h3>
+                <p>Quickly run Python scripts from your browser.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://yeetyourfiles.lol/download/14e1adee-78be-4328-bc0c-52a3ba8b3046" alt="Screenshot showing code history in BrowserPie">
+                <h3>Code History</h3>
+                <p>Review the code that sites have executed on your computer to keep track.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://miro.medium.com/v2/resize:fit:1100/1*CWFkh5z8oa6dZfn5_gkKKQ.jpeg" alt="GitHub Repository Screenshot">
+                <h3>Open Source</h3>
+                <p>Explore and contribute on <a href="https://github.com/pooiod/BrowserPie" target="_blank">GitHub</a>.</p>
+            </div>
+        </section>
+
+        <section class="download">
+            <h2>Get Started with BrowserPie</h2>
+            <p>To use BrowserPie, you need Python installed. Follow the steps below:</p>
+            <ul style="text-align: left; display: inline-block; margin-top: 1em;">
+                <li>1. <a href="https://www.python.org/downloads/" target="_blank">Install Python</a> if you don't have it.</li>
+                <li>2. <a href="/BrowserPie Installer.exe" download>Download BrowserPie</a> for Windows.</li>
+                <li>3. Change some settings and start using Python in your browser!</li>
+            </ul>
+            <p style="margin-top: 10px;">For instructions on how to program a website to use Python with BrowserPie, check out the <a href="/docs">documentation</a>.</p>
+        </section>
+
+        <button id="testButton" class="test-button" onclick="test()">Test BrowserPie</button>
+    </main>
+
+    <footer>
+        <p>Created by <strong>pooiod7</strong> | <a href="https://github.com/pooiod/BrowserPie" target="_blank">GitHub Repository</a></p>
+    </footer>
+
+</body>
+</html>

@@ -17,7 +17,7 @@ BrowserPie.setPort = function(port) {
     BrowserPie.port = port;
 };
 
-BrowserPie.isInstalled = function() {
+BrowserPie.isInstalled = async function() {
     return fetch('https://localhost:'+BrowserPie.port+'/')
         .then(response => {
             if (!response.ok) {
@@ -34,7 +34,7 @@ BrowserPie.openHistory = function() {
     window.open("https://localhost:5938/history");
 };
 
-BrowserPie.isAllowed = function() {
+BrowserPie.isAllowed = async function() {
     return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent('"true"'))
         .then(response => {
             if (!response.ok) {
@@ -47,7 +47,7 @@ BrowserPie.isAllowed = function() {
         });
 };
 
-BrowserPie.run = function(code) {
+BrowserPie.run = async function(code) {
     return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent(code))
         .then(response => {
             if (!response.ok) {
