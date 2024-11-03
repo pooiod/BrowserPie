@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +25,15 @@
             color: #fff;
             padding: 1.5em 0;
             text-align: center;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: headerSlideIn 0.8s forwards;
+        }
+        @keyframes headerSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         header h1 {
             font-size: 2.5em;
@@ -37,6 +47,15 @@
             padding: 2em;
             max-width: 800px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 0.8s forwards;
+        }
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         section {
             margin-bottom: 2em;
@@ -86,7 +105,7 @@
 
 <header>
     <h1>BrowserPie Documentation</h1>
-    <a href="/">Back to Home</a>
+    <a class="back-home" href="/">Back to Home</a>
 </header>
 
 <main>
