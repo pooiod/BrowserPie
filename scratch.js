@@ -6,7 +6,7 @@
     if (!Scratch.extensions.unsandboxed) {
         throw new Error('This extension must run unsandboxed');
     }
-  
+
     class BrowserPie {
         constructor() {
             this.port = 5938;
@@ -16,6 +16,8 @@
             return {
                 id: 'BrowserPie',
                 name: 'Python',
+                color1: "#3a709f",
+                color2: '#ffd344',
                 blocks: [
                     {
                         opcode: 'isInstalled',
