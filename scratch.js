@@ -23,22 +23,25 @@
                         opcode: 'isInstalled',
                         blockType: Scratch.BlockType.REPORTER,
                         text: 'Is BrowserPie installed',
+                        disableMonitor: true
                     },
                     {
                         opcode: 'isAllowed',
                         blockType: Scratch.BlockType.REPORTER,
                         text: 'Can run python',
+                        disableMonitor: true
                     },
                     {
                         opcode: 'run2',
                         blockType: Scratch.BlockType.REPORTER,
                         text: 'Run python [CODE]',
+                        disableMonitor: true,
                         arguments: {
                             CODE: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: '9 + 10',
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: '9 + 10',
                             },
-                        },
+                        }
                     },
                     {
                         opcode: 'run',
@@ -49,12 +52,12 @@
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: 'import ctypes; ctypes.windll.user32.MessageBoxW(0, "Hello, World!", "Alert", 1)',
                             },
-                        },
+                        }
                     },
                     {
                         opcode: 'downloadBrowserPie',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Download BrowserPie',
+                        text: 'Download BrowserPie'
                     }
                 ]
             };
