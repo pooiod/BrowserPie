@@ -31,7 +31,7 @@ BrowserPie.isInstalled = async function() {
 };
 
 BrowserPie.openHistory = function() {
-    window.open("https://localhost:5938/history");
+    window.open("https://localhost:"+BrowserPie.port+"/history");
 };
 
 BrowserPie.isAllowed = async function() {

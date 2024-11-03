@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BrowserPie Documentation">
+    <title>BrowserPie Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2b2e4a;
+            color: #fff;
+            padding: 1.5em 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+        }
+        header a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        main {
+            padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section {
+            margin-bottom: 2em;
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2b2e4a;
+            margin-bottom: 1em;
+        }
+        pre {
+            background-color: #f2f2f2;
+            color: #abb2bf;
+            padding: 2px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #2b2e4a;
+            color: #bbb;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        a.back-home {
+            display: inline-block;
+            margin: 1em 0;
+            background-color: #00d4ff;
+            color: white;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        a.back-home:hover {
+            background-color: #009ecb;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<header>
+    <h1>BrowserPie Documentation</h1>
+    <a href="/">Back to Home</a>
+</header>
+
+<main>
+    <section>
+        <h2>Getting Started</h2>
+        <p>To use BrowserPie in your web application, you need to include the BrowserPie library. Add the following script tag to your HTML file:</p>
+        <pre><code>&lt;script src="https://browserpie.pages.dev/lib.js"&gt;&lt;/script&gt;</code></pre>
+        <p>This library enables your web pages to run Python code directly in the browser.</p>
+    </section>
+
+    <section>
+        <h2>Function Overview</h2>
+        <p>BrowserPie provides a set of functions to interact with Python in your browser. Below are the available functions along with their descriptions and examples of how to use them.</p>
+
+        <br>
+        <h3>1. <code>BrowserPie.setPort(port)</code></h3>
+        <p><strong>Purpose:</strong> Changes the port that your site listens on. This is necessary if the user has changed the port on which the BrowserPie server is running. The default port is <code>5938</code>.</p>
+        <p><strong>Usage:</strong> Use this function only if you need to adjust the port for your site to match the port set by the BrowserPie server.</p>
+        <pre><code>BrowserPie.setPort(5938);  // Sets the port to 5938 (default)</code></pre>
+
+        <br>
+        <h3>2. <code>BrowserPie.openHistory()</code></h3>
+        <p><strong>Purpose:</strong> Opens the BrowserPie script history page in a new tab.</p>
+        <pre><code>BrowserPie.openHistory();  // Opens the history page</code></pre>
+
+        <br>
+        <h3>3. <code>BrowserPie.isInstalled()</code></h3>
+        <p><strong>Purpose:</strong> Checks if BrowserPie is installed on the selected port. Returns <code>true</code> if installed, <code>false</code> otherwise.</p>
+        <p><strong>Usage:</strong> This function is asynchronous, so you must use it within an async context. Call it to confirm that BrowserPie is set up correctly before attempting to run Python code.</p>
+        <pre><code>const installed = await BrowserPie.isInstalled();
+if (installed) {
+    console.log("BrowserPie is installed.");
+} else {
+    console.log("BrowserPie is not installed.");
+}</code></pre>
+
+        <br>
+        <h3>4. <code>BrowserPie.isAllowed()</code></h3>
+        <p><strong>Purpose:</strong> Checks if the current website is allowed to execute Python code. If not, it shows a prompt to the user to grant permission.</p>
+        <p><strong>Usage:</strong> This function is asynchronous and should be called before running any Python code to ensure the site has the necessary permissions.</p>
+        <pre><code>const allowed = await BrowserPie.isAllowed();
+if (allowed) {
+    console.log("This site is allowed to run Python code.");
+} else {
+    console.log("This site is not allowed to run Python code.");
+}</code></pre>
+
+        <br>
+        <h3>5. <code>BrowserPie.run(python)</code></h3>
+        <p><strong>Purpose:</strong> Executes the given Python code string in the context of the web page.</p>
+        <p><strong>Usage:</strong> This function is also asynchronous. Use it to run any Python script you want. Make sure the script is a valid Python code string.</p>
+        <pre><code>await BrowserPie.run("print('Hello from BrowserPie!')");  // Running a simple print command</code></pre>
+    </section>
+</main>
+
+<footer>
+    <p>Created by <strong>pooiod7</strong></p>
+</footer>
+
+</body>
+</html>
