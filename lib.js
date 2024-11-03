@@ -51,7 +51,7 @@ BrowserPie.run = async function(code) {
     return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent(code))
         .then(response => {
             if (!response.ok) {
-                throw new Error('Script allowed: ' + response.statusText);
+                throw new Error('Script not allowed: ' + response.statusText);
             }
             return response.text();
         })
