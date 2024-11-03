@@ -4,7 +4,7 @@ var BrowserPie = {
 }
 
 BrowserPie.isInstalled = function() {
-    return fetch('https://localhost:5938/')
+    return fetch('https://localhost:'+BrowserPie.port+'/')
         .then(response => {
             if (!response.ok) {
                 return false;
@@ -17,7 +17,7 @@ BrowserPie.isInstalled = function() {
 };
 
 BrowserPie.isAllowed = function() {
-    return fetch('https://localhost:5938/run?py=' + encodeURIComponent('"true"'))
+    return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent('"true"'))
         .then(response => {
             if (!response.ok) {
                 return false;
@@ -30,7 +30,7 @@ BrowserPie.isAllowed = function() {
 };
 
 BrowserPie.run = function(code) {
-    return fetch('https://localhost:5938/run?py=' + encodeURIComponent(code))
+    return fetch('https://localhost:'+BrowserPie.port+'/run?py=' + encodeURIComponent(code))
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
