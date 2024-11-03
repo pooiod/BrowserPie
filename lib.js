@@ -3,6 +3,8 @@ var BrowserPie = {
     port:5938
 }
 
+// import os; os.startfile(os.getcwd())
+
 BrowserPie.isInstalled = function() {
     return fetch('https://localhost:'+BrowserPie.port+'/')
         .then(response => {
