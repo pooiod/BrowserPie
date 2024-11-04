@@ -32,7 +32,13 @@
                         disableMonitor: true
                     },
                     {
-                        opcode: 'run2',
+                        opcode: 'getPort',
+                        blockType: Scratch.BlockType.REPORTER,
+                        text: 'Current port',
+                        disableMonitor: true
+                    },
+                    {
+                        opcode: 'runReturn',
                         blockType: Scratch.BlockType.REPORTER,
                         text: 'Run python [CODE]',
                         disableMonitor: true,
@@ -49,8 +55,19 @@
                         text: 'Run python [CODE]',
                         arguments: {
                             CODE: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: 'import ctypes; ctypes.windll.user32.MessageBoxW(0, "Hello, World!", "Alert", 1)',
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: 'import ctypes; ctypes.windll.user32.MessageBoxW(0, "Hello, World!", "Alert", 1)',
+                            },
+                        }
+                    },
+                    {
+                        opcode: 'setPort',
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'Set port [PORT]',
+                        arguments: {
+                            PORT: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: this.port,
                             },
                         }
                     },
@@ -118,6 +135,10 @@
 
         setPort({PORT}) {
             this.port = PORT;
+        }
+
+        getPort() {
+            return this.port;
         }
 
         downloadBrowserPie() {
