@@ -158,7 +158,7 @@ if (allowed) {
             <h3>5. <code>BrowserPie.run(python)</code></h3>
             <p><strong>Purpose:</strong> Executes the given Python code string in the context of the web page.</p>
             <p><strong>Usage:</strong> This function is also asynchronous. Use it to run any Python script you want. Make sure the script is a valid Python code string.</p>
-            <pre><code>await BrowserPie.run("print('Hello from BrowserPie!')");  // Running a simple print command</code></pre>
+            <pre><code>await BrowserPie.run('import ctypes; ctypes.windll.user32.MessageBoxW(0, "Hello, World!", "Alert", 1)');  // SHowing an alert box</code></pre>
         </section>
     </main>
 
