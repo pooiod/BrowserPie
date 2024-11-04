@@ -95,19 +95,20 @@
                 if (!response.ok) {
                     throw new Error('Script not allowed: ' + response.statusText);
                 }
-                return Scratch.Cast.toString(response.text());
+                return response.text();
             })
             .catch(error => {
                 return 'Error executing code: ' + error.message;
             });
         }
-        async run2({CODE}) {
+        
+        async runReturn({CODE}) {
             return Scratch.fetch('https://localhost:'+this.port+'/run?py=' + encodeURIComponent(CODE))
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Script not allowed: ' + response.statusText);
                 }
-                return Scratch.Cast.toString(response.text());
+                return response.text();
             })
             .catch(error => {
                 return 'Error executing code: ' + error.message;
