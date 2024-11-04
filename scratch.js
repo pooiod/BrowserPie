@@ -103,17 +103,18 @@
         }
         
         async runReturn({CODE}) {
-            return Scratch.fetch('https://localhost:'+this.port+'/run?py=' + encodeURIComponent(CODE))
-            .then(response => {
+            try {
+                const response = await Scratch.fetch('https://localhost:' + this.port + '/run?py=' + encodeURIComponent(CODE));
+                
                 if (!response.ok) {
                     throw new Error('Script not allowed: ' + response.statusText);
                 }
-                return response.text();
-            })
-            .catch(error => {
+                
+                return await response.text();
+            } catch (error) {
                 return 'Error executing code: ' + error.message;
-            });
-        }
+            }
+        }        
 
         setPort({PORT}) {
             this.port = PORT;
