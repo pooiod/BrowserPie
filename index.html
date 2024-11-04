@@ -216,7 +216,7 @@
     </footer>
 
     <script>
-        document.querySelectorAll('a').forEach((el, i) => {
+        document.querySelectorAll('a:not([target="_blank"])').forEach((el, i) => {
             const url = el.href;
             el.href = '#';
             el.addEventListener('click', (e) => {
