@@ -96,7 +96,7 @@
                 if (!response.ok) {
                     throw new Error('Script not allowed: ' + response.statusText);
                 }
-                return response.text();
+                return Scratch.Cast.toString(response.text());
             })
             .catch(error => {
                 return 'Error executing code: ' + error.message;
