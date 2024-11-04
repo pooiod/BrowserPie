@@ -32,7 +32,7 @@
                         disableMonitor: true
                     },
                     {
-                        opcode: 'run2',
+                        opcode: 'run',
                         blockType: Scratch.BlockType.REPORTER,
                         text: 'Run python [CODE]',
                         disableMonitor: true,
@@ -89,7 +89,6 @@
                 });
         }
       
-        async run2(args) {this.run(args)}
         async run({CODE}) {
             return Scratch.fetch('https://localhost:'+this.port+'/run?py=' + encodeURIComponent(CODE))
             .then(response => {
