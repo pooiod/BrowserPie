@@ -205,7 +205,7 @@
                 <li>2. <a href="/BrowserPie Installer.exe" download>Download BrowserPie</a> for Windows.</li>
                 <li>3. Change some settings and start using Python in your browser!</li>
             </ul>
-            <p style="margin-top: 10px;">For instructions on how to program a website to use Python with BrowserPie, check out the <a onclick="Array.from(document.querySelectorAll('body > *')).reverse().forEach((el, i) => { el.style.transition = 'opacity 0.5s'; setTimeout(() => el.style.opacity = '0', i * 100); }); setTimeout(() => location.href = '/docs', document.body.children.length * 100 + 500);">documentation</a>.</p>
+            <p style="margin-top: 10px;">For instructions on how to program a website to use Python with BrowserPie, check out the <a href="/docs">documentation</a>.</p>
         </section>
 
         <button id="testButton" class="test-button" onclick="test()">Test BrowserPie</button>
@@ -215,5 +215,22 @@
         <p>Created by <strong>pooiod7</strong> | <a href="https://github.com/pooiod/BrowserPie" target="_blank">GitHub Repository</a></p>
     </footer>
 
+    <script>
+        document.querySelectorAll('a').forEach((el, i) => {
+            const url = el.href;
+            el.href = '#';
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('body > *').forEach((child, j) => {
+                    child.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => child.style.opacity = '0', j * 100);
+                });
+                setTimeout(() => {
+                    location.href = url;
+                    setTimeout(() => location.reload(), 1000);
+                }, document.body.children.length * 100 + 500);
+            });
+        });
+    </script>
 </body>
 </html>
