@@ -17,7 +17,7 @@
                 id: 'BrowserPie',
                 name: 'Python',
                 color1: "#3a709f",
-                color2: '#ffd344',
+                color2: '#3a579f',
                 blocks: [
                     {
                         opcode: 'isInstalled',
