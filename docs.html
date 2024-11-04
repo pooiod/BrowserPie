@@ -105,7 +105,7 @@
 
     <header>
         <h1>BrowserPie Documentation</h1>
-        <a class="back-home" onclick="document.body.style.transition='opacity 0.5s ease-in-out'; document.body.style.opacity='0'; setTimeout(() => { window.location.href='/'; setTimeout(() => window.location.reload(), 1000); }, 500);">Back to Home</a>
+        <a class="back-home lnk" onclick="document.body.style.transition='opacity 0.5s ease-in-out'; document.body.style.opacity='0'; setTimeout(() => { window.location.href='/'; setTimeout(() => window.location.reload(), 1000); }, 500);">Back to Home</a>
     </header>
 
     <main>
@@ -167,7 +167,7 @@ if (allowed) {
     </footer>
 
     <script>
-        document.querySelectorAll('a').forEach((el, i) => {
+        document.querySelectorAll('a:not(.lnk)').forEach((el, i) => {
             const url = el.href;
             el.href = '#';
             el.addEventListener('click', (e) => {
